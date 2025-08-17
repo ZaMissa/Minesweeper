@@ -296,7 +296,11 @@ class GameUI {
             if (drawerToggle && drawerToggle.contains(e.target)) return;
             if (drawer && drawer.contains(e.target)) return;
             
-            if (!infoBtn.contains(e.target) && !instructions.contains(e.target)) {
+            // Don't close tooltip if clicking on info button itself
+            if (infoBtn.contains(e.target)) return;
+            
+            // Only close tooltip if clicking outside both info button and instructions
+            if (!instructions.contains(e.target)) {
                 instructions.classList.remove('show');
                 console.log('🔒 Tooltip closed (click outside)');
             }
@@ -425,12 +429,4 @@ class GameUI {
     }
 }
 
-// Initialize UI when game is ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Wait for game to be initialized
-    setTimeout(() => {
-        if (window.game) {
-            window.gameUI = new GameUI(window.game);
-        }
-    }, 100);
-});
+// UI initialization is now handled in main.js
