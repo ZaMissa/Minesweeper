@@ -281,8 +281,15 @@ class GameUI {
             console.log('Tooltip visible:', instructions.classList.contains('show'));
         });
         
-        // Close tooltip when clicking outside
+        // Close tooltip when clicking outside (but not on drawer elements)
         document.addEventListener('click', (e) => {
+            const drawerToggle = document.getElementById('drawer-toggle');
+            const drawer = document.getElementById('stats-drawer');
+            
+            // Don't close tooltip if clicking on drawer elements
+            if (drawerToggle && drawerToggle.contains(e.target)) return;
+            if (drawer && drawer.contains(e.target)) return;
+            
             if (!infoBtn.contains(e.target) && !instructions.contains(e.target)) {
                 instructions.classList.remove('show');
                 console.log('🔒 Tooltip closed (click outside)');
@@ -316,15 +323,18 @@ class GameUI {
         }
         
         // Toggle drawer on button click
-        drawerToggle.addEventListener('click', () => {
+        drawerToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
             console.log('🖱️ Drawer toggle clicked!');
-            drawer.classList.toggle('open');
             
-            // Add overlay for mobile
-            if (drawer.classList.contains('open')) {
-                this.addDrawerOverlay();
-            } else {
+            const isOpen = drawer.classList.contains('open');
+            if (isOpen) {
+                drawer.classList.remove('open');
                 this.removeDrawerOverlay();
+            } else {
+                drawer.classList.add('open');
+                this.addDrawerOverlay();
             }
         });
         
@@ -346,6 +356,7 @@ class GameUI {
         
         // Close drawer when clicking outside (on overlay)
         document.addEventListener('click', (e) => {
+            // Only close drawer if clicking on overlay, not on other elements
             if (e.target.classList.contains('drawer-overlay')) {
                 console.log('🔒 Drawer closed (overlay click)');
                 drawer.classList.remove('open');
