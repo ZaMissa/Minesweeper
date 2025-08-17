@@ -74,6 +74,8 @@ body {
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
     position: relative; /* Dodano za tooltip pozicioniranje */
+    /* Debug styles */
+    outline: 3px solid pink;
 }
 
 .game-header h1 {
@@ -1229,10 +1231,10 @@ button, select, input, .cell {
 
 /* Game instructions - Tooltip */
 .game-instructions {
-    position: absolute;
+    position: fixed; /* Promenjeno sa absolute na fixed */
     top: 50%;
-    right: calc(100% + 15px);
-    transform: translateY(-50%) translateX(-10px);
+    left: 50%; /* Promenjeno sa right na left */
+    transform: translate(-50%, -50%) translateX(-10px);
     background: var(--card-background);
     border: 2px solid red; /* Debug border */
     border-radius: 8px;
@@ -1396,7 +1398,7 @@ button, select, input, .cell {
 .game-instructions.show {
     opacity: 1 !important;
     visibility: visible !important;
-    transform: translateY(-50%) translateX(0) !important;
+    transform: translate(-50%, -50%) translateX(0) !important;
     /* Debug styles */
     background: lime !important;
     border: 3px solid green !important;
