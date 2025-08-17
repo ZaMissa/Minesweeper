@@ -59,83 +59,98 @@
             </div>
         </div>
         
-        <div class="statistics-panel">
-            <h3>📊 Statistika</h3>
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-label">Ukupno igara:</span>
-                    <span class="stat-value" id="total-games">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Pobede:</span>
-                    <span class="stat-value" id="total-wins">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Porazi:</span>
-                    <span class="stat-value" id="total-losses">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Procenat uspeha:</span>
-                    <span class="stat-value" id="win-rate">0%</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Najbolje vreme:</span>
-                    <span class="stat-value" id="best-time">--</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">Srednje vreme:</span>
-                    <span class="stat-value" id="avg-time">--</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">🌰 Mini-igra:</span>
-                    <span class="stat-value" id="walnut-stats">0/0</span>
-                </div>
+        <!-- Drawer Toggle Button -->
+        <button id="drawer-toggle" class="drawer-toggle-btn" title="Otvori/Zatvori Statistiku i Magične Moći">
+            <span class="drawer-icon">📊</span>
+        </button>
+        
+        <!-- Statistics & Magic Powers Drawer -->
+        <div id="stats-drawer" class="stats-drawer">
+            <div class="drawer-header">
+                <h3>📊 Statistika & 🧙‍♂️ Magične Moći</h3>
+                <button id="drawer-close" class="drawer-close-btn">✕</button>
             </div>
             
-            <div class="achievements-section">
-                <h4>🧙‍♂️ Magične Moći - Teži Nivoi</h4>
-                <div class="achievements-grid" id="achievements-grid">
-                    <div class="achievement-item locked" data-achievement="first-win">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Magična Intuicija</span>
-                        <span class="achievement-description">Prva pobeda otključava magičnu intuiciju</span>
-                        <span class="achievement-stats">0/1 pobeda</span>
-                        <span class="achievement-reward">🎯 Otključava: Ultra Početnik (15x15, 25 mina)</span>
+            <div class="drawer-content">
+                <div class="statistics-panel">
+                    <h4>📊 Statistika</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Ukupno igara:</span>
+                            <span class="stat-value" id="total-games">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Pobede:</span>
+                            <span class="stat-value" id="total-wins">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Porazi:</span>
+                            <span class="stat-value" id="total-losses">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Procenat uspeha:</span>
+                            <span class="stat-value" id="win-rate">0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Najbolje vreme:</span>
+                            <span class="stat-value" id="best-time">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Srednje vreme:</span>
+                            <span class="stat-value" id="avg-time">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">🌰 Mini-igra:</span>
+                            <span class="stat-value" id="walnut-stats">0/0</span>
+                        </div>
                     </div>
-                    <div class="achievement-item locked" data-achievement="speed-demon">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Vremenska Kontrola</span>
-                        <span class="achievement-description">Pobeda u 120s otključava kontrolu vremena</span>
-                        <span class="achievement-stats">0/1 brza pobeda</span>
-                        <span class="achievement-reward">⏰ Otključava: Vremenski Izazov (20x20, 60 mina)</span>
-                    </div>
-                    <div class="achievement-item locked" data-achievement="veteran">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Magična Aura</span>
-                        <span class="achievement-description">3+ igre otključavaju magičnu auru</span>
-                        <span class="achievement-stats">0/3 igre</span>
-                        <span class="achievement-reward">🌟 Otključava: Aura Izazov (25x25, 100 mina)</span>
-                    </div>
-                    <div class="achievement-item locked" data-achievement="perfect-game">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Savršenstvo</span>
-                        <span class="achievement-description">Pobeda bez greške otključava savršenstvo</span>
-                        <span class="achievement-stats">0/1 savršena igra</span>
-                        <span class="achievement-reward">💎 Otključava: Savršenstvo Izazov (30x30, 150 mina)</span>
-                    </div>
-                    <div class="achievement-item locked" data-achievement="mine-master">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Gospodar Mina</span>
-                        <span class="achievement-description">10+ pobeda otključava kontrolu nad minama</span>
-                        <span class="achievement-stats">0/10 pobeda</span>
-                        <span class="achievement-reward">👑 Otključava: Gospodar Izazov (35x35, 200 mina)</span>
-                    </div>
-                    <div class="achievement-item locked" data-achievement="streak-master">
-                        <span class="achievement-icon">🔒</span>
-                        <span class="achievement-text">Magični Niz</span>
-                        <span class="achievement-description">3 pobede u nizu otključavaju magični niz</span>
-                        <span class="achievement-stats">0/3 pobede u nizu</span>
-                        <span class="achievement-reward">🔥 Otključava: Niz Izazov (40x40, 300 mina)</span>
+                    
+                    <div class="achievements-section">
+                        <h4>🧙‍♂️ Magične Moći - Teži Nivoi</h4>
+                        <div class="achievements-grid" id="achievements-grid">
+                            <div class="achievement-item locked" data-achievement="first-win">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Magična Intuicija</span>
+                                <span class="achievement-description">Prva pobeda otključava magičnu intuiciju</span>
+                                <span class="achievement-stats">0/1 pobeda</span>
+                                <span class="achievement-reward">🎯 Otključava: Ultra Početnik (15x15, 25 mina)</span>
+                            </div>
+                            <div class="achievement-item locked" data-achievement="speed-demon">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Vremenska Kontrola</span>
+                                <span class="achievement-description">Pobeda u 120s otključava kontrolu vremena</span>
+                                <span class="achievement-stats">0/1 brza pobeda</span>
+                                <span class="achievement-reward">⏰ Otključava: Vremenski Izazov (20x20, 60 mina)</span>
+                            </div>
+                            <div class="achievement-item locked" data-achievement="veteran">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Magična Aura</span>
+                                <span class="achievement-description">3+ igre otključavaju magičnu auru</span>
+                                <span class="achievement-stats">0/3 igre</span>
+                                <span class="achievement-reward">🌟 Otključava: Aura Izazov (25x25, 100 mina)</span>
+                            </div>
+                            <div class="achievement-item locked" data-achievement="perfect-game">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Savršenstvo</span>
+                                <span class="achievement-description">Pobeda bez greške otključava savršenstvo</span>
+                                <span class="achievement-stats">0/1 savršena igra</span>
+                                <span class="achievement-reward">💎 Otključava: Savršenstvo Izazov (30x30, 150 mina)</span>
+                            </div>
+                            <div class="achievement-item locked" data-achievement="mine-master">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Gospodar Mina</span>
+                                <span class="achievement-description">10+ pobeda otključava kontrolu nad minama</span>
+                                <span class="achievement-stats">0/10 pobeda</span>
+                                <span class="achievement-reward">👑 Otključava: Gospodar Izazov (35x35, 200 mina)</span>
+                            </div>
+                            <div class="achievement-item locked" data-achievement="streak-master">
+                                <span class="achievement-icon">🔒</span>
+                                <span class="achievement-text">Magični Niz</span>
+                                <span class="achievement-description">3 pobede u nizu otključavaju magični niz</span>
+                                <span class="achievement-stats">0/3 pobede u nizu</span>
+                                <span class="achievement-reward">🔥 Otključava: Niz Izazov (40x40, 300 mina)</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

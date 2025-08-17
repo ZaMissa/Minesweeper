@@ -16,6 +16,9 @@ class GameUI {
         
         // Add tooltip functionality
         this.setupTooltip();
+        
+        // Add drawer functionality
+        this.setupDrawer();
     }
 
     setupKeyboardShortcuts() {
@@ -295,6 +298,86 @@ class GameUI {
         });
         
         console.log('✅ Tooltip setup complete!');
+    }
+    
+    setupDrawer() {
+        const drawerToggle = document.getElementById('drawer-toggle');
+        const drawer = document.getElementById('stats-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        console.log('🔧 Setting up drawer...');
+        console.log('Drawer toggle:', drawerToggle);
+        console.log('Drawer:', drawer);
+        console.log('Drawer close:', drawerClose);
+        
+        if (!drawerToggle || !drawer || !drawerClose) {
+            console.error('❌ Drawer elements not found!');
+            return;
+        }
+        
+        // Toggle drawer on button click
+        drawerToggle.addEventListener('click', () => {
+            console.log('🖱️ Drawer toggle clicked!');
+            drawer.classList.toggle('open');
+            
+            // Add overlay for mobile
+            if (drawer.classList.contains('open')) {
+                this.addDrawerOverlay();
+            } else {
+                this.removeDrawerOverlay();
+            }
+        });
+        
+        // Close drawer on close button
+        drawerClose.addEventListener('click', () => {
+            console.log('🔒 Drawer close clicked!');
+            drawer.classList.remove('open');
+            this.removeDrawerOverlay();
+        });
+        
+        // Close drawer on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && drawer.classList.contains('open')) {
+                console.log('🔒 Drawer closed (Escape key)');
+                drawer.classList.remove('open');
+                this.removeDrawerOverlay();
+            }
+        });
+        
+        // Close drawer when clicking outside (on overlay)
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('drawer-overlay')) {
+                console.log('🔒 Drawer closed (overlay click)');
+                drawer.classList.remove('open');
+                this.removeDrawerOverlay();
+            }
+        });
+        
+        console.log('✅ Drawer setup complete!');
+    }
+    
+    addDrawerOverlay() {
+        // Remove existing overlay if any
+        this.removeDrawerOverlay();
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'drawer-overlay';
+        document.body.appendChild(overlay);
+        
+        // Show overlay with animation
+        setTimeout(() => {
+            overlay.classList.add('show');
+        }, 10);
+    }
+    
+    removeDrawerOverlay() {
+        const overlay = document.querySelector('.drawer-overlay');
+        if (overlay) {
+            overlay.classList.remove('show');
+            setTimeout(() => {
+                overlay.remove();
+            }, 300);
+        }
     }
 }
 
