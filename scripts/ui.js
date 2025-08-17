@@ -13,6 +13,9 @@ class GameUI {
         
         // Add visual feedback
         this.setupVisualFeedback();
+        
+        // Add tooltip functionality
+        this.setupTooltip();
     }
 
     setupKeyboardShortcuts() {
@@ -244,6 +247,36 @@ class GameUI {
         
         progressFill.style.width = `${progress}%`;
         progressText.textContent = `${Math.round(progress)}%`;
+    }
+
+    setupTooltip() {
+        const infoBtn = document.getElementById('info-btn');
+        const instructions = document.getElementById('game-instructions');
+        
+        if (!infoBtn || !instructions) return;
+        
+        // Position instructions relative to info button
+        const header = document.querySelector('.game-header');
+        header.style.position = 'relative';
+        
+        // Toggle tooltip on click
+        infoBtn.addEventListener('click', () => {
+            instructions.classList.toggle('show');
+        });
+        
+        // Close tooltip when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!infoBtn.contains(e.target) && !instructions.contains(e.target)) {
+                instructions.classList.remove('show');
+            }
+        });
+        
+        // Close tooltip on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                instructions.classList.remove('show');
+            }
+        });
     }
 }
 
