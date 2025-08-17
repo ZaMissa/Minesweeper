@@ -69,6 +69,7 @@ body {
     backdrop-filter: blur(10px);
     border: 2px solid var(--primary-color);
     transition: all 0.3s ease;
+    position: relative; /* Dodano za tooltip pozicioniranje */
 }
 
 .game-header h1 {
@@ -1223,7 +1224,7 @@ button, select, input, .cell {
 .game-instructions {
     position: absolute;
     top: 100%;
-    right: 0;
+    right: 20px;
     background: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -1234,6 +1235,7 @@ button, select, input, .cell {
     min-width: 250px;
     text-align: left;
     margin-top: 10px;
+    color: var(--text-color);
 }
 
 .game-instructions.show {

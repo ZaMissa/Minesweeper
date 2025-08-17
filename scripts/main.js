@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.gameUI = new GameUI(window.game);
     
     console.log('🎮 Blagoje Minesweeper initialized successfully!');
+    console.log('🔧 GameUI instance:', window.gameUI);
     console.log('💡 Tips:');
     console.log('   - Left click to reveal cells');
     console.log('   - Right click to place/remove flags');

@@ -253,21 +253,36 @@ class GameUI {
         const infoBtn = document.getElementById('info-btn');
         const instructions = document.getElementById('game-instructions');
         
-        if (!infoBtn || !instructions) return;
+        console.log('🔧 Setting up tooltip...');
+        console.log('Info button:', infoBtn);
+        console.log('Instructions:', instructions);
+        
+        if (!infoBtn || !instructions) {
+            console.error('❌ Info button or instructions not found!');
+            return;
+        }
         
         // Position instructions relative to info button
         const header = document.querySelector('.game-header');
-        header.style.position = 'relative';
+        if (header) {
+            header.style.position = 'relative';
+            console.log('✅ Header positioned relatively');
+        }
         
         // Toggle tooltip on click
-        infoBtn.addEventListener('click', () => {
+        infoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('🖱️ Info button clicked!');
             instructions.classList.toggle('show');
+            console.log('Tooltip visible:', instructions.classList.contains('show'));
         });
         
         // Close tooltip when clicking outside
         document.addEventListener('click', (e) => {
             if (!infoBtn.contains(e.target) && !instructions.contains(e.target)) {
                 instructions.classList.remove('show');
+                console.log('🔒 Tooltip closed (click outside)');
             }
         });
         
@@ -275,8 +290,11 @@ class GameUI {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 instructions.classList.remove('show');
+                console.log('🔒 Tooltip closed (Escape key)');
             }
         });
+        
+        console.log('✅ Tooltip setup complete!');
     }
 }
 
