@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blagoje Minesweeper</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>💣 Blagoje Minesweeper</h1>
+            <div class="game-controls">
+                <div class="difficulty-selector">
+                    <label for="difficulty">Težina:</label>
+                    <select id="difficulty">
+                        <option value="beginner">Početnik (9x9, 10 mina)</option>
+                        <option value="intermediate">Srednji (16x16, 40 mina)</option>
+                        <option value="expert">Ekspert (16x30, 99 mina)</option>
+                        <option value="ultra-beginner" disabled>🔒 Ultra Početnik (15x15, 25 mina)</option>
+                        <option value="time-challenge" disabled>🔒 Vremenski Izazov (20x20, 60 mina)</option>
+                        <option value="aura-challenge" disabled>🔒 Aura Izazov (25x25, 100 mina)</option>
+                        <option value="perfection-challenge" disabled>🔒 Savršenstvo Izazov (30x30, 150 mina)</option>
+                        <option value="master-challenge" disabled>🔒 Gospodar Izazov (35x35, 200 mina)</option>
+                        <option value="streak-challenge" disabled>🔒 Niz Izazov (40x40, 300 mina)</option>
+                    </select>
+                </div>
+                <button id="new-game-btn" class="btn btn-primary">Nova Igra</button>
+                <button id="debug-btn" class="btn btn-secondary">Debug</button>
+                <button id="theme-toggle" class="btn btn-secondary" title="Toggle Dark/Light Mode">
+                    <span id="theme-icon">🌙</span>
+                </button>
+                <button id="sound-toggle" class="btn btn-secondary" title="Toggle Sound">
+                    <span id="sound-icon">🔊</span>
+                </button>
+                <button id="cursor-toggle" class="btn btn-secondary" title="Toggle Custom Cursor">
+                    <span id="cursor-icon">🔧</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="game-info">
+            <div class="mine-counter">
+                <span class="label">Mine:</span>
+                <span id="mine-count">10</span>
+            </div>
+            <div class="timer">
+                <span class="label">Vreme:</span>
+                <span id="timer">000</span>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <span class="progress-text" id="progress-text">0%</span>
+            </div>
+        </div>
+        
+        <div class="statistics-panel">
+            <h3>📊 Statistika</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-label">Ukupno igara:</span>
+                    <span class="stat-value" id="total-games">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Pobede:</span>
+                    <span class="stat-value" id="total-wins">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Porazi:</span>
+                    <span class="stat-value" id="total-losses">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Procenat uspeha:</span>
+                    <span class="stat-value" id="win-rate">0%</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Najbolje vreme:</span>
+                    <span class="stat-value" id="best-time">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Srednje vreme:</span>
+                    <span class="stat-value" id="avg-time">--</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">🌰 Mini-igra:</span>
+                    <span class="stat-value" id="walnut-stats">0/0</span>
+                </div>
+            </div>
+            
+            <div class="achievements-section">
+                <h4>🧙‍♂️ Magične Moći - Teži Nivoi</h4>
+                <div class="achievements-grid" id="achievements-grid">
+                    <div class="achievement-item locked" data-achievement="first-win">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Magična Intuicija</span>
+                        <span class="achievement-description">Prva pobeda otključava magičnu intuiciju</span>
+                        <span class="achievement-stats">0/1 pobeda</span>
+                        <span class="achievement-reward">🎯 Otključava: Ultra Početnik (15x15, 25 mina)</span>
+                    </div>
+                    <div class="achievement-item locked" data-achievement="speed-demon">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Vremenska Kontrola</span>
+                        <span class="achievement-description">Pobeda u 120s otključava kontrolu vremena</span>
+                        <span class="achievement-stats">0/1 brza pobeda</span>
+                        <span class="achievement-reward">⏰ Otključava: Vremenski Izazov (20x20, 60 mina)</span>
+                    </div>
+                    <div class="achievement-item locked" data-achievement="veteran">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Magična Aura</span>
+                        <span class="achievement-description">3+ igre otključavaju magičnu auru</span>
+                        <span class="achievement-stats">0/3 igre</span>
+                        <span class="achievement-reward">🌟 Otključava: Aura Izazov (25x25, 100 mina)</span>
+                    </div>
+                    <div class="achievement-item locked" data-achievement="perfect-game">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Savršenstvo</span>
+                        <span class="achievement-description">Pobeda bez greške otključava savršenstvo</span>
+                        <span class="achievement-stats">0/1 savršena igra</span>
+                        <span class="achievement-reward">💎 Otključava: Savršenstvo Izazov (30x30, 150 mina)</span>
+                    </div>
+                    <div class="achievement-item locked" data-achievement="mine-master">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Gospodar Mina</span>
+                        <span class="achievement-description">10+ pobeda otključava kontrolu nad minama</span>
+                        <span class="achievement-stats">0/10 pobeda</span>
+                        <span class="achievement-reward">👑 Otključava: Gospodar Izazov (35x35, 200 mina)</span>
+                    </div>
+                    <div class="achievement-item locked" data-achievement="streak-master">
+                        <span class="achievement-icon">🔒</span>
+                        <span class="achievement-text">Magični Niz</span>
+                        <span class="achievement-description">3 pobede u nizu otključavaju magični niz</span>
+                        <span class="achievement-stats">0/3 pobede u nizu</span>
+                        <span class="achievement-reward">🔥 Otključava: Niz Izazov (40x40, 300 mina)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-board-container">
+            <div id="game-board" class="game-board"></div>
+        </div>
+
+        <div class="game-status">
+            <div id="status-message" class="status-message"></div>
+        </div>
+
+        <div class="game-instructions">
+            <h3>Kako igrati:</h3>
+            <ul>
+                <li><strong>Levi klik:</strong> Otvori polje</li>
+                <li><strong>Desni klik:</strong> Postavi/ukloni zastavicu</li>
+                <li><strong>Cilj:</strong> Otvori sva polja bez mina</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Mini-igra "Sa čim krcamo orase" -->
+    <div id="walnut-game-modal" class="walnut-game-modal">
+        <div class="walnut-game-content">
+            <div class="walnut-game-header">
+                <h2>🌰 Mini-Igra: Sa čim krcamo orase?</h2>
+                <button id="walnut-close-btn" class="walnut-close-btn">✕</button>
+            </div>
+            <div class="walnut-game-body">
+                <div class="walnut-question">
+                    <p>Svaki drugi put kada igrate Minesweeper, morate da odgovorite na ovo pitanje:</p>
+                    <h3>"Sa čim krcamo orase?"</h3>
+                </div>
+                <div class="walnut-options">
+                    <button class="walnut-option" data-correct="false">🌰 Sa orasima</button>
+                    <button class="walnut-option" data-correct="false">🍯 Sa medom</button>
+                    <button class="walnut-option" data-correct="true">🧀 Sa sirom</button>
+                    <button class="walnut-option" data-correct="false">🍫 Sa čokoladom</button>
+                </div>
+                <div class="walnut-result" id="walnut-result"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Animirani kursor - kramp -->
+    <div id="custom-cursor" class="custom-cursor">
+        <div class="cursor-wrench">🔧</div>
+        <div class="cursor-sparkles">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">✨</span>
+            <span class="sparkle">✨</span>
+        </div>
+    </div>
+
+    <script src="scripts/board.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/ui.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
