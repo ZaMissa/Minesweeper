@@ -5,6 +5,8 @@ class GameUI {
     }
 
     setupAdditionalUI() {
+        console.log('🔧 Setting up additional UI...');
+        
         // Add keyboard shortcuts
         this.setupKeyboardShortcuts();
         
@@ -15,10 +17,14 @@ class GameUI {
         this.setupVisualFeedback();
         
         // Add tooltip functionality
+        console.log('🔧 Setting up tooltip...');
         this.setupTooltip();
         
         // Add drawer functionality
+        console.log('🔧 Setting up drawer...');
         this.setupDrawer();
+        
+        console.log('✅ Additional UI setup complete!');
     }
 
     setupKeyboardShortcuts() {
