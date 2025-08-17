@@ -1250,6 +1250,9 @@ button, select, input, .cell {
     /* Debug styles */
     outline: 2px solid blue;
     background: yellow !important; /* Debug background */
+    /* Sakrivanje tooltip-a */
+    pointer-events: none;
+    user-select: none;
 }
 
 /* Drawer Toggle Button */
@@ -1402,6 +1405,9 @@ button, select, input, .cell {
     /* Debug styles */
     background: lime !important;
     border: 3px solid green !important;
+    /* Omogućavanje interakcije */
+    pointer-events: auto;
+    user-select: auto;
 }
 
 @keyframes slideIn {
