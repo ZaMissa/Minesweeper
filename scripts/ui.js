@@ -322,6 +322,15 @@ class GameUI {
             return;
         }
         
+        // Check if drawer is already initialized
+        if (drawerToggle.dataset.initialized === 'true') {
+            console.log('Drawer already initialized, skipping...');
+            return;
+        }
+        
+        // Mark as initialized
+        drawerToggle.dataset.initialized = 'true';
+        
         // Toggle drawer on button click
         drawerToggle.addEventListener('click', (e) => {
             e.preventDefault();
@@ -329,13 +338,21 @@ class GameUI {
             console.log('🖱️ Drawer toggle clicked!');
             
             const isOpen = drawer.classList.contains('open');
+            console.log('Drawer currently open:', isOpen);
+            
             if (isOpen) {
+                console.log('Closing drawer...');
                 drawer.classList.remove('open');
                 this.removeDrawerOverlay();
             } else {
+                console.log('Opening drawer...');
                 drawer.classList.add('open');
+                console.log('Drawer classes after adding open:', drawer.className);
                 this.addDrawerOverlay();
             }
+            
+            // Force reflow to ensure CSS is applied
+            drawer.offsetHeight;
         });
         
         // Close drawer on close button
@@ -368,6 +385,8 @@ class GameUI {
     }
     
     addDrawerOverlay() {
+        console.log('Adding drawer overlay...');
+        
         // Remove existing overlay if any
         this.removeDrawerOverlay();
         
@@ -375,19 +394,27 @@ class GameUI {
         overlay.className = 'drawer-overlay';
         document.body.appendChild(overlay);
         
+        console.log('Overlay created:', overlay);
+        
         // Show overlay with animation
         setTimeout(() => {
             overlay.classList.add('show');
+            console.log('Overlay shown with show class');
         }, 10);
     }
     
     removeDrawerOverlay() {
+        console.log('Removing drawer overlay...');
         const overlay = document.querySelector('.drawer-overlay');
         if (overlay) {
+            console.log('Found overlay, removing show class...');
             overlay.classList.remove('show');
             setTimeout(() => {
+                console.log('Removing overlay element...');
                 overlay.remove();
             }, 300);
+        } else {
+            console.log('No overlay found to remove');
         }
     }
 }
