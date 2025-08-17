@@ -49,9 +49,14 @@ Moderna web verzija klasične Minesweeper igre sa naprednim funkcionalnostima i 
 
 ## 🚀 Kako Pokrenuti
 
+### **🌐 Live Demo (GitHub Pages)**
+**🎮 Igrajte direktno u browseru: [https://zamissa.github.io/Minesweeper/](https://zamissa.github.io/Minesweeper/)**
+
+### **💻 Lokalno Pokretanje**
+
 1. **Klonirajte repozitorijum**:
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/ZaMissa/Minesweeper.git
    cd "Blagoje Minesweeper"
    ```
 
@@ -91,6 +96,7 @@ Moderna web verzija klasične Minesweeper igre sa naprednim funkcionalnostima i 
 - **Local Storage**: Perzistentno čuvanje podataka
 - **Web Audio API**: Zvučni efekti
 - **CSS Grid/Flexbox**: Responsive layout
+- **GitHub Pages**: Hosting i deployment
 
 ## 📁 Struktura Projekta
 
@@ -105,8 +111,23 @@ Blagoje Minesweeper/
 │   ├── board.js       # Logika table
 │   └── ui.js          # UI interakcije
 ├── README.md          # Ova dokumentacija
-└── predlozi.md        # Lista predloženih modifikacija
+├── predlozi.md        # Lista predloženih modifikacija
+├── .gitignore         # Git ignore pravila
+└── LICENSE            # MIT licenca
 ```
+
+## 🌐 Deployment
+
+### **GitHub Pages**
+- **Live URL**: [https://zamissa.github.io/Minesweeper/](https://zamissa.github.io/Minesweeper/)
+- **Automatički deploy**: Svaki push na main branch aktivira novi deploy
+- **HTTPS**: Automatski SSL sertifikat
+- **CDN**: Globalna distribucija za brže učitavanje
+
+### **Lokalni Development**
+- **Port**: 8000 (možete promeniti)
+- **Hot reload**: Osvežite browser za promene
+- **Debug mode**: Console logovi za development
 
 ## 🎯 Planirane Funkcionalnosti
 
@@ -114,15 +135,50 @@ Pogledajte `predlozi.md` za detaljnu listu predloženih modifikacija i poboljša
 
 ## 🤝 Doprinosi
 
-Dobrodošli su svi predlozi za poboljšanja! Molimo vas da:
-1. Opisete problem ili predlog
-2. Priložite screenshot ako je potrebno
-3. Testirate vaše izmene
+Dobrodošli su svi predlozi za poboljšanja! 🚀
+
+### **Kako doprineti:**
+1. **Fork repozitorijum** na GitHub-u
+2. **Kreirajte feature branch**: `git checkout -b feature/nova-funkcionalnost`
+3. **Napravite izmene** i testirajte ih
+4. **Commit i push**: `git commit -m "Dodajem novu funkcionalnost"`
+5. **Kreirajte Pull Request** sa opisom izmena
+
+### **Šta možete da uradite:**
+- 🐛 **Reportujte bugove** - Opisujte problem detaljno
+- 💡 **Predložite feature-e** - Nove ideje su uvek dobrodošle
+- 📝 **Poboljšajte dokumentaciju** - README, komentari u kodu
+- 🎨 **Unapredite UI/UX** - Novi stilovi, animacije
+- 🧪 **Testirajte** - Igrajte igru i pronađite probleme
+
+### **Kontakt:**
+- **GitHub Issues**: [https://github.com/ZaMissa/Minesweeper/issues](https://github.com/ZaMissa/Minesweeper/issues)
+- **Pull Requests**: [https://github.com/ZaMissa/Minesweeper/pulls](https://github.com/ZaMissa/Minesweeper/pulls)
+
+## 📊 Status Projekta
+
+### **🎯 Trenutni Status: 90% ZAVRŠENO**
+- ✅ **Core Gameplay**: Chording, Question Mark, Auto-reveal
+- ✅ **User Experience**: Dark/Light Mode, Sound Effects, Custom Cursor
+- ✅ **Gamification**: Magične Moći, Statistics, Mini-Igra
+- ✅ **Technical**: Debug Mode, Board Validation, Accessibility
+- ✅ **Mobile**: Touch Support, Responsive Design, Offline Support
+
+### **🚧 U Toku:**
+- 🔄 **Auto-complete** - automatsko otvaranje sigurnih polja
+- 🔄 **Undo/Redo** - mogućnost poništavanja poteza
+
+### **📋 Planirano:**
+- 🎮 **Level Editor** - kreiranje custom tabla
+- 🌐 **Social Features** - deljenje rezultata
+- 🏆 **Leaderboards** - globalni ranking
 
 ## 📄 Licenca
 
-Ovaj projekat je otvorenog koda i slobodan je za korišćenje i modifikaciju.
+Ovaj projekat je otvorenog koda i slobodan je za korišćenje i modifikaciju pod [MIT licencom](LICENSE).
 
 ---
 
-**Uživajte u igri! 🎮✨**
+**🎮 Igrajte sada: [https://zamissa.github.io/Minesweeper/](https://zamissa.github.io/Minesweeper/)**
+
+**Uživajte u igri! 🎯✨**
