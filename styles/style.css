@@ -366,6 +366,7 @@ body {
 
 /* Info Button i Tooltip */
 .info-btn {
+    position: relative;
     background: var(--secondary-color);
     border: none;
     border-radius: 50%;
@@ -1227,8 +1228,9 @@ button, select, input, .cell {
 /* Game instructions - Tooltip */
 .game-instructions {
     position: absolute;
-    top: 100%;
-    right: 20px;
+    top: 50%;
+    right: calc(100% + 15px);
+    transform: translateY(-50%) translateX(-10px);
     background: var(--card-background);
     border: 1px solid var(--border-color);
     border-radius: 8px;
@@ -1236,11 +1238,9 @@ button, select, input, .cell {
     box-shadow: 0 4px 12px var(--shadow-color);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
     z-index: 1000;
     min-width: 250px;
     text-align: left;
-    margin-top: 10px;
     color: var(--text-color);
     transition: all 0.3s ease;
 }
@@ -1391,7 +1391,7 @@ button, select, input, .cell {
 .game-instructions.show {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(-50%) translateX(0);
 }
 
 @keyframes slideIn {
